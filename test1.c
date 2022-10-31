@@ -9,7 +9,8 @@ int main(void)
 {
     char *str;
 
-    str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
+    str = "I do not fear 12 computers. I fe83ar t19he lack of the47m - Isaac Asimov";
+
     _puts(str);
     return (0);
 }

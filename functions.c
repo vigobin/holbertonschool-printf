@@ -54,7 +54,7 @@ void print_number(int n)
  * @n: amount of arguments in list
  */
 
-void print_strings(const char *separator, const unsigned int n, ...)
+void print_strings (const unsigned int n, ...)
 {
 	va_list valist;
 	unsigned int i;
@@ -66,15 +66,9 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		for (i = 1; i <= n; i++)
 		{
 			s = va_arg(valist, char *);
-			if (s == NULL)
-				_puts("(nil)");
-			else
-				_puts("%s", s);
-
-			if (i != n && separator != NULL)
-				_puts("%s", separator);
+			if (i != n)
+				_puts(s);
 		}
 		va_end(valist);
 	}
-	_puts("\n");
 }
