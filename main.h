@@ -20,6 +20,7 @@ typedef struct op
 
 int put_char(char c);
 int _printf(const char *format, ...);
-int put_char(char c)
+void _puts(char *str);
+void print_number(int n);
 
 #endif
