@@ -47,3 +47,28 @@ void print_number(int n)
 
 	put_char((num % 10) + '0');
 }
+
+/**
+ * print_strings - print varying amount of strings
+ * @separator: delimiter
+ * @n: amount of arguments in list
+ */
+
+void print_strings(const unsigned int n, ...)
+{
+	va_list valist;
+	unsigned int i;
+	char *s;
+
+	if (n > 0)
+	{
+		va_start(valist, n);
+		for (i = 1; i <= n; i++)
+		{
+			s = va_arg(valist, char *);
+			if (i != n)
+				_puts(s);
+		}
+		va_end(valist);
+	}
+}
