@@ -25,7 +25,6 @@ void _puts(char *str)
 	{
 		put_char(str[length]);
 	}
-	put_char('\n');
 }
 
 /**
