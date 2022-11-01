@@ -2,11 +2,11 @@
 
 /**
  *format_specifier - function that selects the correct format.
- *@s: operator passed as argument to the program.
+ *@f: operator passed as argument to the program.
  *Return: NULL for no match.
  */
 
-int (*format_specifier(char *s))(char)
+int (*format_specifier(char *f))(va_list)
 {
 	int i;
 
@@ -23,16 +23,64 @@ int (*format_specifier(char *s))(char)
 
 	while (opsel[i].op)
 	{
-		if (*(opsel[i].op) == *s)
+		if (*(opsel[i].op) == *f)
 			return (opsel[i].f);
 		i++;
 	}
-	return (NULL);
 }
 
-int spec_c(char c)
-{
-	int i;
+/**
+ * spec_c - output char.
+ * @c: character to print.
+ * Return: 0
+ */
 
-	for (i = 0)
+int spec_c(va_list c)
+{
+	put_char((char)va_arg(c, int));
+	return (0);
+}
+
+/**
+ * spec_s - output this string.
+ * @s: string to print.
+ * Return: 0
+ */
+
+int spec_s(va_list s)
+{
+	return (0);
+}
+
+/**
+ * spec_p - output percentage sign.
+ * @p: print %.
+ * Return: 0
+ */
+
+int spec_perc(va_list p)
+{
+	return (0);
+}
+
+/**
+ * spec_d - output integer.
+ * @d: integer to print.
+ * Return: 0
+ */
+
+int spec_d(va_list d)
+{
+	return (0);
+}
+
+/**
+ * spec_i - output integer.
+ * @i: integer to print.
+ * Return: 0
+ */
+
+int spec_i(va_list i)
+{
+	return (0);
 }
