@@ -8,5 +8,21 @@
 
 int _printf(const char *format, ...)
 {
+	int i;
+	va_list ap;
+	int (*func)(va_list);
 
+	i = 0;
+
+	if (format == NULL)
+		return (-1);
+
+	va_start(ap, format);
+
+	while (format[i])
+	{
+		put_char(format[i]);
+		i++;
+	}
+	va_end(ap);
 }
