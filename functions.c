@@ -12,7 +12,7 @@ int put_char(char c)
 }
 
 /**
- * _puts - function that prints a string, followed by a new line, to stdout.
+ * _puts - function that prints a string to stdout.
  * @str : string input.
  * Return: 0
  */
@@ -25,7 +25,6 @@ void _puts(char *str)
 	{
 		put_char(str[length]);
 	}
-	put_char('\n');
 }
 
 /**
