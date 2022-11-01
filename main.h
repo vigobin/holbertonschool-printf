@@ -15,7 +15,7 @@
 typedef struct op
 {
 	char *op;
-	int (*f)(int a, int b);
+	int (*f)(va_list);
 } op_t;
 
 int put_char(char c);
