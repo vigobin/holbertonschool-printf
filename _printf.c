@@ -10,19 +10,21 @@ int _printf(const char *format, ...)
 {
 	int i;
 	va_list ap;
-	int (*func)(va_list);
-
-	i = 0;
+	char *c;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(ap, format);
 
-	while (format[i])
+	for (i = 0; format != '\0'; i++)
 	{
-		put_char(format[i]);
-		i++;
+		if (format != '%')
+		{
+			put_char(format[i]);
+			i++;
+		}
 	}
 	va_end(ap);
+	return (0);
 }
