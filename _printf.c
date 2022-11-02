@@ -8,23 +8,27 @@
 
 int _printf(const char *format, ...)
 {
-	int i;
+	int i, char_count;
 	va_list ap;
-	char *c;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(ap, format);
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i]; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
+		{
+			/* need to update for format specifiers*/
+			return (1);
+		}
+		else
 		{
 			put_char(format[i]);
-			i++;
+			char_count++;
 		}
 	}
 	va_end(ap);
-	return (0);
+	return (char_count);
 }

@@ -27,6 +27,7 @@ int (*format_specifier(char *f))(va_list)
 			return (opsel[i].f);
 		i++;
 	}
+	return (0);
 }
 
 /**
@@ -37,7 +38,7 @@ int (*format_specifier(char *f))(va_list)
 
 int spec_c(va_list c)
 {
-	put_char((char)va_arg(c, int));
+	put_char(va_arg(c, int));
 	return (0);
 }
 
@@ -49,17 +50,22 @@ int spec_c(va_list c)
 
 int spec_s(va_list s)
 {
+	char *str = va_arg(s, char *);
+
+	_puts(str);
 	return (0);
 }
 
 /**
- * spec_p - output percentage sign.
+ * spec_perc - output percentage sign.
  * @p: print %.
  * Return: 0
  */
 
-int spec_perc(va_list p)
+int spec_perc(__attribute__((unused))va_list p)
 {
+	put_char('%');
+
 	return (0);
 }
 
@@ -71,6 +77,8 @@ int spec_perc(va_list p)
 
 int spec_d(va_list d)
 {
+	print_number(va_arg(d, int));
+
 	return (0);
 }
 
@@ -82,5 +90,7 @@ int spec_d(va_list d)
 
 int spec_i(va_list i)
 {
+	print_number(va_arg(i, int));
+
 	return (0);
 }
