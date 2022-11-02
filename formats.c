@@ -34,83 +34,37 @@ int (*format_specifier(const char *f))(va_list)
 /**
  * spec_c - output char.
  * @c: character to print.
- * Return: character count.
+ * Return: 0 Always.
  */
 
 int spec_c(va_list c)
 {
-	int lencount = 0;
-
-	if (!c)
-		return (0);
-
 	put_char(va_arg(c, int));
-	lencount++;
-	return (lencount);
+	return (0);
 }
 
 /**
  * spec_s - output this string.
  * @s: string to print.
- * Return: string length.
+ * Return: 0 Always.
  */
 
 int spec_s(va_list s)
 {
-	int len;
 	char *str = va_arg(s, char *);
 
-	if (str == NULL)
-		str = "(null)";
-
-	for (len = 0; str[len]; len++)
-	{
-		put_char(str[len]);
-	}
-	return (len);
+	_puts(str);
+	return (0);
 }
 
 /**
  * spec_d - output integer, also applied to i.
  * @d: integer to print.
- * Return: length of the numbers.
+ * Return: 0 always.
  */
 
 int spec_d(va_list d)
 {
-	int numcount, i, div;
-	int number = va_arg(d, int);
-	char intmin[11] = {"-2147483648"};
-
-	numcount = 0;
-	div = 1;
-
-	if (number == INT_MIN)
-	{
-		for (i = 0; i <= 10; i++)
-		{
-			put_char(intmin[i]);
-			numcount++;
-		}
-		return (numcount);
-	}
-	if (number < 0)
-	{
-		put_char('-');
-		number = -number;
-		numcount++;
-	}
-	while ((number / div) >= 10)
-	{
-		div *= 10;
-	}
-	while (div >= 1)
-	{
-		put_char((number / div) + '0');
-		number = number % div;
-		div /= 10;
-		numcount++;
-	}
-
-	return (numcount);
+	print_number(va_arg(d, int));
+	return (0);
 }
