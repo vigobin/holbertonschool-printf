@@ -10,24 +10,42 @@ int _printf(const char *format, ...)
 {
 	int i, char_count;
 	va_list ap;
+	int (*specifier)(va_list);
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(ap, format);
 
-	for (i = 0; format[i]; i++)
+	i = 0;
+	while (format[i])
 	{
-		if (format[i] == '%')
-		{
-			/* need to update for format specifiers*/
-			return (1);
-		}
-		else
+		for (i = i; format[i] != '%' && format[i]; i++)
 		{
 			put_char(format[i]);
 			char_count++;
 		}
+		if (!format[i])
+			return (char_count);
+
+		specifier = format_specifier(&format[i + 1]);
+		if (specifier != NULL)
+		{
+			char_count += specifier(ap);
+			i += 2;
+			continue;
+		}
+		if (!format[i + 1])
+			return (-1);
+
+		put_char(format[i]);
+		char_count++;
+
+		if (format[i + 1] == '%')
+			i += 2;
+		else
+			i++;
+
 	}
 	va_end(ap);
 	return (char_count);

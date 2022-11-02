@@ -6,7 +6,7 @@
  *Return: NULL for no match.
  */
 
-int (*format_specifier(char *f))(va_list)
+int (*format_specifier(const char *f))(va_list)
 {
 	int i;
 
