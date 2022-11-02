@@ -65,6 +65,32 @@ int spec_s(va_list s)
 
 int spec_d(va_list d)
 {
-	print_number(va_arg(d, int));
+	int i, div;
+	int number = va_arg(d, int);
+	char intmin[11] = {"-2147483648"};
+
+	div = 1;
+	if (number == INT_MIN)
+	{
+		for (i = 0; i <= 10; i++)
+		{
+			put_char(intmin[i]);
+		}
+	}
+	if (number < 0)
+	{
+		put_char('-');
+		number = -number;
+	}
+	while ((number / div) >= 10)
+	{
+		div *= 10;
+	}
+	while (div >= 1)
+	{
+		put_char((number / div) + '0');
+		number = number % div;
+		div /= 10;
+	}
 	return (0);
 }
