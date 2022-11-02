@@ -24,10 +24,12 @@ int (*format_specifier(const char *f))(va_list)
 	while (opsel[i].op)
 	{
 		if (*(opsel[i].op) == *f)
-			return (opsel[i].f);
+		{
+			break;
+		}
 		i++;
 	}
-	return (0);
+	return (opsel[i].f);
 }
 
 /**
@@ -38,6 +40,9 @@ int (*format_specifier(const char *f))(va_list)
 
 int spec_c(va_list c)
 {
+	if (!c)
+		return (0);
+
 	put_char(va_arg(c, int));
 	return (0);
 }
