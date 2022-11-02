@@ -48,9 +48,8 @@ void print_number(int n)
 }
 
 /**
- * print_strings - print varying amount of strings
- * @separator: delimiter
- * @n: amount of arguments in list
+ * print_strings - print varying amount of strings.
+ * @n: amount of arguments in list.
  */
 
 void print_strings(const unsigned int n, ...)
