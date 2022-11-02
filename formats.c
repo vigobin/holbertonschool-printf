@@ -60,27 +60,31 @@ int spec_s(va_list s)
 /**
  * spec_d - output integer, also applied to i.
  * @d: integer to print.
- * Return: 0 always.
+ * Return: length of numbers.
  */
 
 int spec_d(va_list d)
 {
-	int i, div;
+	int i, div, numcount;
 	int number = va_arg(d, int);
 	char intmin[11] = {"-2147483648"};
 
 	div = 1;
+	numcount = 0;
 	if (number == INT_MIN)
 	{
 		for (i = 0; i <= 10; i++)
 		{
 			put_char(intmin[i]);
+			numcount++;
 		}
+		return (numcount);
 	}
 	if (number < 0)
 	{
 		put_char('-');
 		number = -number;
+		numcount++;
 	}
 	while ((number / div) >= 10)
 	{
@@ -91,6 +95,7 @@ int spec_d(va_list d)
 		put_char((number / div) + '0');
 		number = number % div;
 		div /= 10;
+		numcount++;
 	}
-	return (0);
+	return (numcount);
 }
