@@ -34,27 +34,41 @@ int (*format_specifier(const char *f))(va_list)
 /**
  * spec_c - output char.
  * @c: character to print.
- * Return: 0 Always.
+ * Return: length of characters.
  */
 
 int spec_c(va_list c)
 {
+	int lencount = 0;
+
+	if (!c)
+		return (0);
+
 	put_char(va_arg(c, int));
-	return (0);
+	lencount++;
+
+	return (lencount);
 }
 
 /**
  * spec_s - output this string.
  * @s: string to print.
- * Return: 0 Always.
+ * Return: string length.
  */
 
 int spec_s(va_list s)
 {
 	char *str = va_arg(s, char *);
+	int len;
 
-	_puts(str);
-	return (0);
+	if (str == NULL)
+		str = "(null)";
+
+	for (len = 0; str[len]; len++)
+	{
+		put_char(str[len]);
+	}
+	return (len);
 }
 
 /**
