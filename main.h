@@ -4,6 +4,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
+
 
 /**
  * struct op - Struct op
@@ -15,7 +17,7 @@
 typedef struct op
 {
 	char *op;
-	int (*f)(int a, int b);
+	char *(*f)(va_list);
 } op_t;
 
 int put_char(char c);
