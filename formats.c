@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  *format_specifier - function that selects the correct format.
@@ -47,7 +49,7 @@ int spec_c(va_list args)
  * Return: 0
  */
 
-int spec_s(va_list s)
+int spec_s(va_list args)
 {
 	char *s = va_arg(s, char *);
 	int i = 0;
@@ -71,7 +73,7 @@ int spec_s(va_list s)
  * Return: 0
  */
 
-int spec_perc(va_list p)
+int spec_perc(va_list args)
 {
 	return (0);
 }
@@ -82,7 +84,7 @@ int spec_perc(va_list p)
  * Return: 0
  */
 
-int spec_id(va_list d)
+int spec_id(va_list args)
 {
 	int count = 1 b = 0;
 	unsigned int n = 0;
