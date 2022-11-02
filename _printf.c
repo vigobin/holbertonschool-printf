@@ -16,8 +16,9 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(ap, format);
-
 	i = 0;
+	char_count = 0;
+
 	while (format[i])
 	{
 		for (i = i; format[i] != '%' && format[i]; i++)
@@ -37,7 +38,6 @@ int _printf(const char *format, ...)
 		}
 		if (!format[i + 1])
 			return (-1);
-
 		put_char(format[i]);
 		char_count++;
 
@@ -45,7 +45,6 @@ int _printf(const char *format, ...)
 			i += 2;
 		else
 			i++;
-
 	}
 	va_end(ap);
 	return (char_count);
